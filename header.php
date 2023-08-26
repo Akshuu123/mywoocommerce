@@ -46,16 +46,22 @@
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="header_inner">
-                    <nav>
-                        <?php wp_nav_menu(
-                            array(
-                                'theme_location' => 'primary-menu',
-                                'menu_class'=>'headermenu'
-                            )
-                        ); ?>
-                    </nav>
+            <div class="header_inner">
+                <div class="site-logo">
+                    <?php echo the_custom_logo(); ?>
+                </div>
+                <nav>
+                    <?php wp_nav_menu(
+                        array(
+                            'theme_location' => 'primary-menu',
+                            'menu_class' => 'headermenu'
+                        )
+                    ); ?>
+                </nav>
+                <div class="sidebar_menus">
+                    <?php dynamic_sidebar('sidebar_2'); ?>
                 </div>
             </div>
-        </header> 
+        </header>

@@ -100,6 +100,20 @@ get_header(); ?>
         </div>
     </div>
 </section>
+
+<!-- one category posts -->
+<section class="categorysection">
+    <div class="container">
+        <div class="categoryinnsersection">
+            <div class="categoryshopmain onecategoryposts">
+                <h4>Shop By Sellers</h4>
+            </div>
+            <div class="categoryshopcontent onecategorypost">
+                <?php get_individual_category_post(); ?>
+            </div>
+        </div>
+    </div>
+</section>
 <section>
     <?php get_footer(); ?>
 </section>

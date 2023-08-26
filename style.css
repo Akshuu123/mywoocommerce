@@ -26,13 +26,15 @@ header {
     flex-direction: column;
     background-color: whitesmoke;
 }
-.topbar_main{
+
+.topbar_main {
     display: flex;
     justify-content: center;
     flex-direction: row;
     align-items: center;
     gap: 2rem;
 }
+
 .site_tag {
     display: flex;
     justify-content: space-between;
@@ -64,7 +66,7 @@ header {
 
 .header_inner {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     flex-direction: row;
     padding: 1rem 0rem;
@@ -76,11 +78,10 @@ header {
     text-align: center;
 }
 
-.site_logo img {
-    width: 53%;
-    object-fit: cover;
-    border-radius: 25px;
-
+.custom-logo-link img {
+    width: 70% !important;
+    object-fit: cover !important;
+    text-align: center !important;
 }
 
 .headermenu {
@@ -101,6 +102,15 @@ header {
     font-size: 16px;
     letter-spacing: 2px;
     font-size: 19px;
+}
+
+.headermenu ul li:hover {
+    text-decoration: none !important;
+}
+
+.headermenu ul li a:hover {
+    text-decoration: none !important;
+
 }
 
 .sidebar_menus {

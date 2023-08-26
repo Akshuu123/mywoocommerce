@@ -104,7 +104,7 @@ function get_individual_category_post()
 {
     $args = array(
         'post_type' => 'product',
-        'posts_per_page' => 4,
+        'posts_per_page' => 1,
         // To retrieve all products, set to -1
         'tax_query' => array(
             array(
@@ -123,15 +123,11 @@ function get_individual_category_post()
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
-            $data = get_the_terms(the_ID(), 'product_cat');
-            echo '<pre>';
-            print_r($data);
-            
-            // Display or manipulate product information here
-            the_ID();
-            the_title();
-            the_post_thumbnail();
 
+            $metakeys = get_post_custom_keys(the_Id());
+            echo '<pre>';
+            print_r($metakeys);
+            echo '<br>';
         }
     } else {
         // No posts found
@@ -140,3 +136,4 @@ function get_individual_category_post()
     wp_reset_postdata();
 }
 ?>
+<?php
