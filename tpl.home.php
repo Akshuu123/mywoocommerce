@@ -104,11 +104,11 @@ get_header(); ?>
 <!-- one category posts -->
 <section class="categorysection">
     <div class="container">
-        <div class="categoryinnsersection">
-            <div class="categoryshopmain onecategoryposts">
+        <div class="categoryinnsersection onecategoryposts">
+            <div class="categoryshopmain">
                 <h4>Shop By Sellers</h4>
             </div>
-            <div class="categoryshopcontent onecategorypost">
+            <div class="categoryshopcontent onecategorypost_main">
                 <?php get_individual_category_post(); ?>
             </div>
         </div>

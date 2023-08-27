@@ -69,7 +69,7 @@ header {
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
-    padding: 1rem 0rem;
+    /* padding: 1rem 0rem; */
 }
 
 .site_branding {
@@ -228,14 +228,17 @@ header {
     text-decoration: none !important;
     padding: 1rem 2.5rem;
     text-transform: uppercase;
+    transition: .5s ease-in-out;
     border-radius: 10px;
 }
 
 .bannerbutton a:hover {
     text-decoration: none !important;
     background-color: #ffc806;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    transition: .5s ease-in-out;
     color: black;
+    border-color: #fff ease;
 }
 
 .bannerright img {
@@ -326,6 +329,7 @@ header {
     background-color: black;
     padding: 16px 40px !important;
     border: 1px solid;
+    transition: .5s ease-in-out;
     font-size: 20px;
     text-decoration: none;
     color: white;
@@ -334,6 +338,7 @@ header {
 .innerquickbtn a:hover {
     color: black;
     background-color: white;
+    transition: .5s ease-in-out;
 }
 
 /* section category */
@@ -442,4 +447,45 @@ header {
 /* bestsellersection */
 .bestsellersection {
     padding: 70px 0;
+}
+
+.categoryinnersection {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    flex-direction: column;
+}
+
+.onecategorypost_main {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(4, 1fr) !important;
+    text-align: center;
+    margin-top: 70px;
+}
+
+.bestsellerproduct {
+    text-align: center;
+    background: #fff;
+    box-shadow: 0 4px 4px #00000040;
+    border-radius: 10px;
+    padding: 20px 10px;
+    gap: 1rem;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.productimgnimg {
+    width: auto;
+    height: 25vh;
+    object-fit: cover;
+}
+
+.producttitle h3 a {
+    text-decoration: none !important;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 7px;
+    color: black;
 }

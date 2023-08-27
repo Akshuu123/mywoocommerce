@@ -104,7 +104,7 @@ function get_individual_category_post()
 {
     $args = array(
         'post_type' => 'product',
-        'posts_per_page' => 1,
+        'posts_per_page' => 4,
         // To retrieve all products, set to -1
         'tax_query' => array(
             array(
@@ -123,11 +123,25 @@ function get_individual_category_post()
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
+            $price = get_post_meta(get_the_ID(), '_price', true); ?>
+            <div class="bestsellerproduct">
+                <div class="productimg">
+                    <a href='<?php the_permalink(); ?>'><img src='<?php the_post_thumbnail_url(); ?>' alt=""></a>
+                </div>
+                <div class="producttitle">
+                    <h3 ><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                </div>
+                <div class="productprice">
+                    <?php $product = wc_get_product(get_the_ID()); /* get the WC_Product Object */?>
+                    <p>
+                        <?php echo $product->get_price_html(); ?>
+                    </p>
+                </div>
+            </div>
 
-            $metakeys = get_post_custom_keys(the_Id());
-            echo '<pre>';
-            print_r($metakeys);
-            echo '<br>';
+
+
+            <?php
         }
     } else {
         // No posts found
@@ -137,3 +151,4 @@ function get_individual_category_post()
 }
 ?>
 <?php
+    
