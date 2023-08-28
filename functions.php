@@ -100,6 +100,7 @@ function product_cats()
 
 
 // display individual category posts
+add_action('smartphone_products', 'get_individual_category_post');
 function get_individual_category_post()
 {
     $args = array(
@@ -123,19 +124,31 @@ function get_individual_category_post()
     if ($query->have_posts()) {
         while ($query->have_posts()) {
             $query->the_post();
-            $price = get_post_meta(get_the_ID(), '_price', true); ?>
+            // $price = get_post_meta(get_the_ID(), '_price', true); ?>
+
+
+            <?php $product = wc_get_product(get_the_ID()); /* get the WC_Product Object */?>
             <div class="bestsellerproduct">
                 <div class="productimg">
-                    <a href='<?php the_permalink(); ?>'><img src='<?php the_post_thumbnail_url(); ?>' alt=""></a>
+                    <a href='<?php the_permalink(); ?>'>
+                        <?php
+                        echo get_the_post_thumbnail(get_the_ID(), array(140, 140));
+                        ?>
+                    </a>
                 </div>
                 <div class="producttitle">
-                    <h3 ><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
                 </div>
                 <div class="productprice">
-                    <?php $product = wc_get_product(get_the_ID()); /* get the WC_Product Object */?>
                     <p>
                         <?php echo $product->get_price_html(); ?>
                     </p>
+                    <?php if ($product->is_type('variable')) {
+                        woocommerce_variable_add_to_cart();
+                    } else {
+                        echo "<a class='single_product_link' href='" . $product->add_to_cart_url() . "'>add to cart</a>";
+                    }
+                    ?>
                 </div>
             </div>
 
@@ -151,4 +164,44 @@ function get_individual_category_post()
 }
 ?>
 <?php
-    
+// function customImageSize()
+// {
+//     add_image_size('custom-image', 140, 140, true);
+// }
+// add_action('after_setup_theme', 'customImageSize');
+
+
+// function custom_modify_product_image()
+// {
+//     if (is_shop() || is_product_category() || is_product_tag()) {
+//         add_filter('post_thumbnail_size', function ($size) {
+//             return 'custom-image';
+//         });
+//     }
+// }
+// add_action('woocommerce_product_query', 'custom_modify_product_image');
+
+?>
+<?php
+// latestposts get
+function latestposts()
+{
+
+    $args = array(
+        'post_type' => 'post',
+        'post_per_page' => 3,
+        'orderby' => 'date'
+    );
+    $query = new WP_Query($args);
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            ?>
+            <div class="latestpost">
+                <div class="post_image"></div>
+                <div class="post_content"></div>
+            </div>
+            <?php
+        }
+    }
+}

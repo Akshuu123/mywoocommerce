@@ -109,7 +109,20 @@ get_header(); ?>
                 <h4>Shop By Sellers</h4>
             </div>
             <div class="categoryshopcontent onecategorypost_main">
-                <?php get_individual_category_post(); ?>
+                <?php do_action('smartphone_products'); ?>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- latestblogposts -->
+<section class="categorysection">
+    <div class="container">
+        <div class="categoryinnsersection onecategoryposts">
+            <div class="categoryshopmain">
+                <h4>Latest Posts</h4>
+            </div>
+            <div class="categoryshopcontent latestpost_main" style="text-align='left';">
+             <?php latestposts();?>
             </div>
         </div>
     </div>
