@@ -119,9 +119,9 @@ get_header(); ?>
     <div class="container">
         <div class="categoryinnsersection onecategoryposts">
             <div class="categoryshopmain">
-                <h4>Latest Posts</h4>
+                <h4>Latest Blog Posts</h4>
             </div>
-            <div class="categoryshopcontent latestpost_main" style="text-align='left';">
+            <div class="latestpost_main" style="text-align='left';">
              <?php latestposts();?>
             </div>
         </div>

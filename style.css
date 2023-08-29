@@ -392,13 +392,15 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px 15px;
+    border-radius: 20px;
+    padding: 30px 0 20px;
 }
 
 .categoryitem a {
     cursor: pointer !important;
     text-decoration: none;
-    color: white;
+    color: #3d3d3d;
+    font-weight: 800;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -469,7 +471,7 @@ header {
     background: #fff;
     box-shadow: 0 4px 4px #00000040;
     border-radius: 10px;
-    padding: 20px 10px;
+    padding: 25px 10px;
     gap: 2rem;
     display: flex;
     justify-content: space-around;
@@ -524,6 +526,7 @@ header {
     border: 3px solid #28303d;
     position: relative;
     bottom: 7px;
+    transition: .5s ease-in-out;
 }
 
 .single_product_link:hover {
@@ -537,4 +540,210 @@ header {
 
 .quantity input {
     display: none !important;
+}
+
+/* sectionlatestpost */
+.latestpost_main {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(3, 1fr) !important;
+}
+
+.latestpost {
+    box-shadow: 0 4px 4px rgb(0 0 0/25%);
+    border-radius: 9px;
+    background-color: #f8f8f8;
+    transition: transform .2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.postimage {
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.latestpost div img {
+    width: 400px !important;
+    height: 220px !important;
+    object-fit: cover;
+    transition: ease-in-out .5s;
+}
+
+.latestpost:hover div img {
+
+    transform: scale(1.1);
+}
+
+/* .latestpost div img:hover{
+} */
+.onecategoryposts {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.post_content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 16px 23px;
+}
+
+.post_content_author_and_date {
+    display: flex;
+    justify-content: space-between;
+    gap: 12rem;
+}
+
+.post_content_author_and_date span {
+    font-size: 15px;
+    text-transform: capitalize;
+}
+
+.post_content_title {
+    padding-top: 15px;
+}
+
+.post_content_title h5 {
+    text-align: justify;
+    font-weight: 700;
+    font-size: 18px;
+    padding-bottom: 14px;
+}
+
+.post_content_title a {
+    color: #2c2c2c;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.post_content_content p {
+    font-size: 15px;
+    color: #2c2c2c;
+    line-height: 23.2px;
+    text-align: justify;
+    letter-spacing: 1.5px;
+}
+
+.post_content_fullread {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+    padding: 20px 0;
+    padding-left: 4rem;
+}
+
+.post_content_fullread h5 {
+    font-size: 12px;
+    text-align: center;
+    color: #2c2c2c;
+    margin: 0;
+}
+
+.post_content_fullread h5 a {
+    color: #2c2c2c;
+    font-weight: 600;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+.post_content_arrow_main {
+    position: relative;
+}
+
+/* 
+.content_arrow {
+    height: auto;
+    width: auto;
+}
+
+.content_arrow a {
+    text-decoration: none !important;
+    color: #000;
+}
+
+
+.content_arrow::before {
+    content: "";
+    width: 20px;
+    height: 2px;
+    background: #2c2c2c;
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    right: 24px;
+    transition: all .5s ease;
+}
+
+.content_arrow::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-color: transparent transparent transparent #2c2c2c;
+    position: absolute;
+    top: 50%;
+    margin-top: -4.5px;
+    right: -20px;
+    transition: all .5s ease;
+}
+
+.latestpost:hover .content_arrow::after {
+    font-size: 50px;
+    padding-left: 40px;
+    transition: .5s ease-in-out;
+}
+
+.latestpost:hover .content_arrow::before {
+    content: "";
+    width: 42px;
+    height: 2px;
+    background: #2c2c2c;
+    position: absolute;
+    top: 50%;
+    margin-top: -1px;
+    right: 24px;
+    transition: all .5s ease;
+}
+
+.latestpost:hover .content_arrow::after {
+    transform: translateX(12px) !important;
+}
+ */
+
+
+.arrow {
+    color: black;
+    background-color: inherit;
+    margin: 5rem 0;
+    margin: 20px;
+    font-size: 30px;
+}
+
+.arrow::after {
+    display: inline-block;
+    padding-left: 8px;
+    content: "\0279E";
+    transition: transform 0.3s ease-out;
+}
+
+.latestpost:hover arrow {
+    color: black;
+    background-color: inherit;
+    /* width: 100px; */
+}
+
+.latestpost:hover .arrow::after {
+    transform: translateX(2rem);
+}
+
+/* footer */
+.footer {
+    padding: 70px 0;
 }

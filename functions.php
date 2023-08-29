@@ -64,6 +64,32 @@ function custom_theme_register_sidebars()
             'after_title' => '</h2>',
         )
     );
+    register_sidebar(
+        array(
+            'name' => 'Shop',
+            // Name of the sidebar
+            'id' => 'sidebar_3',
+            // Unique ID for the sidebar
+            'description' => 'This is the main sidebar area.',
+            'before_widget' => '<div class="widget3">',
+            'after_widget' => '</div>',
+            'before_title' => '<h2 class="widget3-title">',
+            'after_title' => '</h2>',
+        )
+    );
+    register_sidebar(
+        array(
+            'name' => 'Information',
+            // Name of the sidebar
+            'id' => 'sidebar_4',
+            // Unique ID for the sidebar
+            'description' => 'This is the main sidebar area.',
+            'before_widget' => '<div class="widget4">',
+            'after_widget' => '</div>',
+            'before_title' => '<h2 class="widget3-title">',
+            'after_title' => '</h2>',
+        )
+    );
 }
 add_action('widgets_init', 'custom_theme_register_sidebars');
 
@@ -77,6 +103,7 @@ function product_cats()
     $taxonomy = 'product_cat'; // WooCommerce product category taxonomy
     $args = array(
         'orderby' => 'name',
+        'post_per_page' => 1
     );
 
     $product_categories = get_terms($taxonomy, $args);
@@ -86,7 +113,9 @@ function product_cats()
 
         if (!empty($image_id)) {
             $image_url = wp_get_attachment_url($image_id);
-            echo '<div class="categoryitem">';
+            $background_color = get_term_meta($category->term_id, 'background_color', false);
+
+            echo '<div class="categoryitem" style="background-color:' . $background_color[0] . ';">';
             echo '<a href="' . esc_url(get_term_link($category)) . '">';
             echo '<h3 class="categoryitemtitle">' . esc_html($category->name) . '</h3>';
             echo '<img src="' . esc_attr($image_url) . '" alt="Category Image">';
@@ -198,10 +227,39 @@ function latestposts()
             $query->the_post();
             ?>
             <div class="latestpost">
-                <div class="post_image"></div>
-                <div class="post_content"></div>
+                <div class="postimage">
+                    <?php the_post_thumbnail(); ?>
+                </div>
+                <div class="post_content">
+                    <div class="post_content_author_and_date">
+                        <span class="post_content_author">
+                            <?php the_author(); ?>
+                        </span>
+                        <span class="post_content_date">
+                            <?php echo get_the_date(); ?>
+                        </span>
+                    </div>
+                    <div class="post_content_title">
+                        <h5><a href=<?php the_permalink(); ?>><?php the_title() ?></a></h5>
+                    </div>
+                    <div class="post_content_content">
+                        <? //php the_content(); ?>
+                        <?php
+                        echo wp_trim_words(get_the_content(), 17, );
+                        ?>
+                    </div>
+                    <div class="post_content_fullread">
+                        <h5><a href='<?php the_permalink(); ?>'>Full Read</a></h5>
+                        <div class="post_content_arrow_main">
+                            <div class="content_arrow">
+                                <!-- <a href=""></a> -->
+                                <a class="arrow" href="<?php the_permalink(); ?>"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <?php
         }
     }
-}
+} ?>
