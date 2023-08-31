@@ -14,7 +14,7 @@ function register_menus()
     register_nav_menus(
         array(
             'primary-menu' => __('Header Menu', 'textdomain'),
-            'secondary-menu' => __('Footer Menu', 'textdomain'),
+            // 'secondary-menu' => __('Footer Menu', 'textdomain'),
         )
     );
 }
@@ -85,6 +85,58 @@ function custom_theme_register_sidebars()
             // Unique ID for the sidebar
             'description' => 'This is the main sidebar area.',
             'before_widget' => '<div class="widget4">',
+            'after_widget' => '</div>',
+            'before_title' => '<h2 class="widget3-title">',
+            'after_title' => '</h2>',
+        )
+    );
+    register_sidebar(
+        array(
+            'name' => 'Preposition',
+            // Name of the sidebar
+            'id' => 'sidebar_5',
+            // Unique ID for the sidebar
+            'description' => 'This is the main sidebar area.',
+            'before_widget' => '<div class="widget5">',
+            'after_widget' => '</div>',
+            'before_title' => '<h2 class="widget3-title">',
+            'after_title' => '</h2>',
+        )
+    );
+    register_sidebar(
+        array(
+            'name' => 'Newsletter',
+            // Name of the sidebar
+            'id' => 'sidebar_6',
+            // Unique ID for the sidebar
+            'description' => 'This is the main sidebar area.',
+            'before_widget' => '<div class="widget6">',
+            'after_widget' => '</div>',
+            'before_title' => '<h2 class="widget3-title">',
+            'after_title' => '</h2>',
+        )
+    );
+    register_sidebar(
+        array(
+            'name' => 'Copyright',
+            // Name of the sidebar
+            'id' => 'sidebar_7',
+            // Unique ID for the sidebar
+            'description' => 'This is the main sidebar area.',
+            'before_widget' => '<div class="widget6">',
+            'after_widget' => '</div>',
+            'before_title' => '<h2 class="widget3-title">',
+            'after_title' => '</h2>',
+        )
+    );
+    register_sidebar(
+        array(
+            'name' => 'Payments',
+            // Name of the sidebar
+            'id' => 'sidebar_8',
+            // Unique ID for the sidebar
+            'description' => 'This is the main sidebar area.',
+            'before_widget' => '<div class="widget6">',
             'after_widget' => '</div>',
             'before_title' => '<h2 class="widget3-title">',
             'after_title' => '</h2>',

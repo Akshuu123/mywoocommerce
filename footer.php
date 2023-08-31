@@ -15,13 +15,18 @@
 <section class="footer">
 	<div class="container">
 		<div class="footer_columns">
-			<div class="footer_column">
-				<div class="sidebar_menus">
-					<?//php $sidebarinformation=get_sidebar('sidebar_3'); 
-					// print_r($sidebarinformation);
-					?>
-					
-					<?//php dynamic_sidebar('sidebar_3'); ?>
+			<div class="sidebar_footer">
+				<?php dynamic_sidebar('sidebar_3'); ?>
+				<?php dynamic_sidebar('sidebar_4'); ?>
+				<?php dynamic_sidebar('sidebar_5'); ?>
+				<?php dynamic_sidebar('sidebar_6'); ?>
+			</div>
+			<div class="footer_card">
+				<div class="footer_card_reserved">
+				<?php dynamic_sidebar('sidebar_7'); ?>
+				</div>
+				<div class="footer_card_payments">
+				<?php dynamic_sidebar('sidebar_8'); ?>
 				</div>
 			</div>
 		</div>
