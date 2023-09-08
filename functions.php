@@ -2,7 +2,10 @@
 
 function mystyle_sheet()
 {
-    wp_enqueue_style('my-style', get_stylesheet_directory_uri() . '/style.css', false, '2.0', 'all');
+    wp_enqueue_style('custom_css', get_stylesheet_directory_uri() . '/style.css', false, '2.0', 'all'); //custom css
+    wp_enqueue_script('jquerysource', get_stylesheet_directory_uri() . '/assets/js/jquerysource.js');
+    wp_enqueue_script('custom_js', get_stylesheet_directory_uri() . '/assets/js/custom.js'); //my custom jquery
+    wp_enqueue_style('font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
 }
 add_action('wp_enqueue_scripts', 'mystyle_sheet');
 
@@ -315,3 +318,147 @@ function latestposts()
         }
     }
 } ?>
+<?php
+function create_survey_post_type()
+{
+    register_post_type(
+        'survey',
+        array(
+            'labels' => array(
+                'name' => __('Surveys'),
+                'singular_name' => __('Survey')
+            ),
+            'public' => true,
+            'menu_icon' => 'dashicons-welcome-widgets-menus',
+            'supports' => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        )
+    );
+}
+add_action('init', 'create_survey_post_type');
+
+
+
+//  url for ajax
+function enqueue_ajax_script()
+{
+    wp_enqueue_script('ajax-script', get_template_directory_uri() . '/js/ajax-script.js', array('jquery'), '1.0', true);
+    wp_localize_script(
+        'ajax-script',
+        'ajax_object',
+        array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            // This sets the 'ajax_url' variable
+            'nonce' => wp_create_nonce('survey_nonce') // You can add a nonce for security
+        )
+    );
+}
+add_action('wp_enqueue_scripts', 'enqueue_ajax_script');
+
+
+
+// ajax survey wp function
+add_action('wp_ajax_submit_survey', 'submit_survey'); //login walo k liye
+add_action('wp_ajax_nopriv_submit_survey', 'submit_survey'); // not Registered k liye
+
+
+function submit_survey()
+{
+    $surveyData = $_POST['survey_data'];
+
+    $post_id = wp_insert_post(
+        array(
+            'post_type' => 'survey',
+            'post_status' => 'publish',
+            'post_title' => 'Information of ' . $surveyData[0],
+
+        )
+    );
+    if ($post_id) {
+        update_post_meta($post_id, 'name', $surveyData[0]);
+        update_post_meta($post_id, 'raceethinicity', $surveyData[1]);
+        update_post_meta($post_id, 'biological_sex', $surveyData[2]);
+        update_post_meta($post_id, 'date_of_birth', $surveyData[3]);
+        update_post_meta($post_id, 'zipcode', $surveyData[4]);
+        update_post_meta($post_id, 'marital_status', $surveyData[5]);
+        update_post_meta($post_id, 'number_of_children', $surveyData[6]);
+        update_post_meta($post_id, 'education', $surveyData[7]);
+        update_post_meta($post_id, 'emloyment_status', $surveyData[8]);
+        update_post_meta($post_id, 'contact', $surveyData[9]);
+        update_post_meta($post_id, 'email', $surveyData[10]);
+
+        $array_result = array(
+            'message' => 'Data Submitted Successfully'
+        );
+        wp_send_json($array_result);
+    } else {
+        $array_result = array(
+            'message' => 'Data Not Submitted'
+        );
+        wp_send_json($array_result);
+    }
+
+    wp_die();
+}
+;
+?>
+
+<?php
+// <!-- display post meta in table from custom post type -->
+function getSurveydata()
+{
+    $args = array(
+        'post_type' => 'survey',
+        'order' => 'ASC',
+        'post_per_page' => -1,
+        // 'no_paging' => true
+    );
+
+    $the_query = new WP_Query($args);
+
+    if ($the_query->have_posts()):
+        while ($the_query->have_posts()):
+            $the_query->the_post();
+            // Content goes here ?>
+            <tr>
+                <td>
+                    <?php echo get_field('name') ?>
+                </td>
+                <td>
+                    <?php echo get_field('raceethinicity') ?>
+                </td>
+                <td>
+                    <?php echo get_field('biological_sex') ?>
+                </td>
+                <td>
+                    <?php echo get_field('date_of_birth') ?>
+                </td>
+                <td>
+                    <?php echo get_field('zipcode') ?>
+                </td>
+                <td>
+                    <?php echo get_field('marital_status') ?>
+                </td>
+                <td>
+                    <?php echo get_field('number_of_children') ?>
+                </td>
+                <td>
+                    <?php echo get_field('education') ?>
+                </td>
+                <td>
+                    <?php echo get_field('emloyment_status') ?>
+                </td>
+                <td>
+                    <?php echo get_field('contact') ?>
+                </td>
+                <td>
+                    <?php echo get_field('email') ?>
+                </td>
+            </tr>
+            <?php
+        endwhile;
+        wp_reset_postdata();
+    else:
+        // Handle the case when no posts are found
+    endif;
+}
+?>
