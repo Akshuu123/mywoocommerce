@@ -1,5 +1,6 @@
 <?php
 // Template Name: Survey Data
+// table show karwane k liye
 ?>
 <?php get_header(); ?>
 <section class="survey_data">
@@ -9,6 +10,7 @@
                 <thead>
 
                     <tr>
+                        <th>Profile</th>
                         <th>Name</th>
                         <th>Race/Ethinicity</th>
                         <th>Sex</th>
@@ -29,4 +31,6 @@
         </div>
     </div>
 </section>
+<?php 
+?>
 <?php get_footer(); ?>

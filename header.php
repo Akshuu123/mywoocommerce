@@ -18,6 +18,7 @@
 <head>
     <meta charset="<?php bloginfo('charset'); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A Website for Shopping Electronic">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -46,22 +47,28 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="header_inner">
-                <div class="site-logo">
-                    <?php echo the_custom_logo(); ?>
+
+                <div class="header_inner">
+                    <div class="site-logo">
+                        <?php echo the_custom_logo(); ?>
+                    </div>
+                    <nav>
+                        <?php wp_nav_menu(
+                            array(
+                                'theme_location' => 'primary-menu',
+                                'menu_class' => 'headermenu'
+                            )
+                        ); ?>
+                    </nav>
+                    <div class="sidebar_menus">
+                        <?php dynamic_sidebar('sidebar_2'); ?>
+                    </div>
                 </div>
-                <nav>
-                    <?php wp_nav_menu(
-                        array(
-                            'theme_location' => 'primary-menu',
-                            'menu_class' => 'headermenu'
-                        )
-                    ); ?>
-                </nav>
-                <div class="sidebar_menus">
-                    <?php dynamic_sidebar('sidebar_2'); ?>
+            </div>
+            <div class="ajax_result_main">
+                <div class="ajax_result" id="search-results">
+                    <ul class="ajax_result_ul"></ul>
                 </div>
             </div>
         </header>

@@ -16,10 +16,10 @@ get_header(); ?>
                 </div>
                 <div class="bannerbutton">
                     <?php
-                    $link = get_field('link');
-                    if ($link): ?>
-                        <a class="button" href="<?php echo esc_url($link['url']); ?>">Buy Now</a>
-                    <?php endif; ?>
+                    // $link = get_field('link');
+                    // if ($link): ?>
+                        <a class="button" href="<?//php echo esc_url($link['url']); ?>">Buy Now</a>
+                    <?//php endif; ?>
                 </div>
             </div>
             <div class="bannerright">
@@ -96,33 +96,6 @@ get_header(); ?>
             </div>
             <div class="categoryshopcontent">
                 <?php product_cats(); ?>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- one category posts -->
-<section class="categorysection">
-    <div class="container">
-        <div class="categoryinnsersection onecategoryposts">
-            <div class="categoryshopmain">
-                <h4>Shop By Sellers</h4>
-            </div>
-            <div class="categoryshopcontent onecategorypost_main">
-                <?php do_action('smartphone_products'); ?>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- latestblogposts -->
-<section class="categorysection">
-    <div class="container">
-        <div class="categoryinnsersection onecategoryposts">
-            <div class="categoryshopmain">
-                <h4>Latest Blog Posts</h4>
-            </div>
-            <div class="latestpost_main" style="text-align='left';">
-             <?php latestposts();?>
             </div>
         </div>
     </div>
